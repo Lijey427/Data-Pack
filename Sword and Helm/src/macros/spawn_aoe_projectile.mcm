@@ -1,0 +1,34 @@
+macro spawn_aoe_projectile {
+block {
+
+summon area_effect_cloud ~ ~ ~ {Tags:["ldz.entity","$$0"],Duration:100}
+
+
+
+<%%
+
+let anchor = ""
+
+if (typeof args[1]==='undefined'){
+}else{
+if (args[1].content === "true"){
+anchor = "execute anchored eyes positioned ^ ^ ^ run "
+}
+}
+emit(`
+
+${anchor}tp @e[type=area_effect_cloud,limit=1,sort=nearest,tag=$$0,tag=!wasd.already_teleported] ~ ~ ~ ~ ~
+tag @e[type=area_effect_cloud,limit=1,sort=nearest,tag=$$0,tag=!wasd.already_teleported] add wasd.already_teleported
+
+`)
+%%>
+
+
+
+
+
+
+
+}
+}
+

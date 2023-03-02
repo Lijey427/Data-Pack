@@ -1,0 +1,17 @@
+macro give_generic_item {
+
+<%%
+
+
+if (typeof args[3]==='undefined'){
+tag = ""
+}else{
+tag = "," + args[3].content + ":" + args[4].content + "b"
+}
+
+emit(`
+give @p $$0{display:{Name:'{"text":"$$1","italic":false}'},CustomModelData:$$2${tag}} 1
+`)
+%%>
+}
+

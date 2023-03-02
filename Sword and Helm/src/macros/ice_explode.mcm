@@ -1,0 +1,13 @@
+macro ice_explode {
+block {
+<%%
+emit(`
+particle minecraft:poof ~ ~ ~ 1.5 1 1.5 0.05 $$0 force
+execute as @e[type=#wasd.tags:mobs_player,distance=0.001..7] run function wasd.lib:affects/on_freeze
+fill ~3 ~2 ~3 ~-3 ~-2 ~-3 ice replace water
+
+`)
+%%>
+}
+}
+

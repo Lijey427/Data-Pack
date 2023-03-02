@@ -1,0 +1,66 @@
+macro rotated_block {
+block {
+
+
+
+execute as @s[tag=!wasd.rotate] run block {
+execute unless entity @p[scores={wasd.bow_frame=1..}] run tag @s add wasd.north
+execute at @p[scores={wasd.bow_frame=1..}] if entity @p[distance=..0.01,y_rotation=135..-135] run tag @s add wasd.south
+execute at @p[scores={wasd.bow_frame=1..}] if entity @p[distance=..0.01,y_rotation=-135..-45] run tag @s add wasd.west
+execute at @p[scores={wasd.bow_frame=1..}] if entity @p[distance=..0.01,y_rotation=-45..45] run tag @s add wasd.north
+execute at @p[scores={wasd.bow_frame=1..}] if entity @p[distance=..0.01,y_rotation=45..135] run tag @s add wasd.east
+tag @s add wasd.rotate
+
+<%%
+if (args[1].content==="true"){
+emit (`
+execute as @s[tag=wasd.south] run data merge entity @s {ItemRotation:0b}
+execute as @s[tag=wasd.west] run data merge entity @s {ItemRotation:2b}
+execute as @s[tag=wasd.north] run data merge entity @s {ItemRotation:4b}
+execute as @s[tag=wasd.east] run data merge entity @s {ItemRotation:6b}
+`)
+}else{
+emit (`
+execute as @s[tag=wasd.south] run data merge entity @s {ItemRotation:4b}
+execute as @s[tag=wasd.west] run data merge entity @s {ItemRotation:6b}
+execute as @s[tag=wasd.north] run data merge entity @s {ItemRotation:0b}
+execute as @s[tag=wasd.east] run data merge entity @s {ItemRotation:2b}
+`)
+}
+
+
+
+%%>
+
+
+}
+
+<%%
+
+if (typeof args[1]==='undefined'){
+location = ""
+tag = ""
+}else{
+location = -1
+tag = "as @s[tag=wasd.moved] positioned as @s "
+
+emit(`
+tp @s[tag=wasd.placed,tag=!wasd.moved] ~ ~1 ~
+tag @s[tag=wasd.placed,tag=!wasd.moved] add wasd.moved
+
+`)
+}
+
+
+emit(`
+execute as @s[tag=!wasd.placed] run setblock ~ ~ ~ $$0
+tag @s add wasd.placed
+execute ${tag}unless block ~ ~${location} ~ $$0 run kill @e[type=item,nbt={Age:0s,Item:{id:"minecraft:$$0"}},sort=nearest,limit=1,distance=..2]
+execute ${tag}unless block ~ ~${location} ~ $$0 run kill @s
+`)
+%%>
+
+
+}
+
+}

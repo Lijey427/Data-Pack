@@ -1,0 +1,7 @@
+macro change_item_count {
+function wasd.lib:items/inventory/$$0/inventory_to_box
+execute as @e[tag=wasd.box_location] at @s store result score @s wasd.temp run data get block ~ ~ ~ Items[0].Count
+execute as @e[tag=wasd.box_location] at @s store result block ~ ~ ~ Items[0].Count int 1 run scoreboard players operation @s wasd.temp $$1= $$2 wasd.constants
+execute at @e[tag=wasd.box_location] run function wasd.lib:items/inventory/$$0/box_to_inventory
+}
+

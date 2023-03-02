@@ -1,0 +1,5 @@
+macro give_generic_block {
+
+give @s item_frame{display:{Name:'{"text":"$$0","italic":false}'},CustomModelData:$$1,EntityTag:{Item:{id:"minecraft:item_frame",Count:1b,tag:{CustomModelData:$$1}},Tags:["wasd.block","$$2"],Invulnerable:1b,Invisible:1b,Fixed:1b,Facing:1b}} 1
+
+}

@@ -1,0 +1,37 @@
+macro deal_damage {
+block {
+execute as @s[type=player] run block{
+tag @s add wasd.change_health
+
+<%%
+let i = 20
+let j = $$0
+for (i; i > args[0].content; i--) {
+
+emit(`execute if score @s Health matches ${i} run attribute @s minecraft:generic.max_health modifier add 0-0-0-0-636 reduce -${j++} add`)
+
+}
+%%>
+execute if score @s Health matches ..$$0 run kill @s
+effect give @s minecraft:instant_health 1 0 true
+schedule function wasd.lib:damage/reset 2t
+}
+
+execute as @s[type=#wasd.tags:mobs] run block{
+<%%
+let minus_one = $$0-1
+emit(`
+effect give @s minecraft:wither 1 1 true
+execute store result score @s wasd.temp run data get entity @s Health 1
+scoreboard players operation @s wasd.temp -= ${minus_one} wasd.constants
+execute unless score @s wasd.temp matches ..0 store result entity @s Health float 1 run scoreboard players get @s wasd.temp
+execute if score @s wasd.temp matches ..0 run kill @s
+`)
+%%>
+}
+
+
+
+}
+}
+

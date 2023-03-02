@@ -1,0 +1,33 @@
+macro raytrace {
+block {
+scoreboard players add @s wasd.timer 1
+tp @s ~ ~ ~
+
+
+<%%
+
+let check_block = ""
+let check_entity = ""
+
+if (args[2].content === "true")
+{
+check_block = "if block ^ ^ ^$$1 #wasd.tags:nonsolid "
+}
+
+if (args[3].content === "true")
+{
+check_entity = "positioned ~ ~1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~-1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~-1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~1 ~ "
+}
+
+
+
+emit(`
+execute unless score @s wasd.timer matches $$0.. positioned ^ ^ ^$$1 ${check_block}${check_entity}run $$4
+`)
+
+
+%%>
+
+}
+}
+

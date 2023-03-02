@@ -1,0 +1,16 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+  "front": "minecraft:block/carved_pumpkin",
+  "side": "minecraft:block/pumpkin_side",
+  "top": "minecraft:block/pumpkin_top"
+  },
+  
+  "overrides": [
+  {"predicate": {"custom_model_data":1}, "model": "block/custom/wire_hat"},
+  {"predicate": {"custom_model_data":2}, "model": "block/custom/panda_ear"},
+  {"predicate": {"custom_model_data":3}, "model": "block/custom/rock_crown"},
+  {"predicate": {"custom_model_data":4}, "model": "block/custom/goblin_hat"},
+  {"predicate": {"custom_model_data":5}, "model": "block/custom/top_hat"}
+  ]
+  }

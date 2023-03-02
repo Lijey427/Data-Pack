@@ -1,0 +1,36 @@
+macro generic_block {
+
+block{
+
+
+<%%
+
+if (typeof args[1]==='undefined'){
+location = ""
+tag = ""
+}else{
+location = -1
+tag = "as @s[tag=wasd.moved] positioned as @s "
+
+emit(`
+tp @s[tag=wasd.placed,tag=!wasd.moved] ~ ~1 ~
+tag @s[tag=wasd.placed,tag=!wasd.moved] add wasd.moved
+`)
+}
+
+emit(`
+execute as @s[tag=!wasd.placed] run setblock ~ ~ ~ $$0
+tag @s add wasd.placed
+execute ${tag}unless block ~ ~${location} ~ $$0 run kill @e[type=item,nbt={Age:0s,Item:{id:"minecraft:$$0"}},sort=nearest,limit=1,distance=..2]
+execute ${tag}unless block ~ ~${location} ~ $$0 run kill @s
+`)
+
+%%>
+
+
+}
+
+
+
+}
+

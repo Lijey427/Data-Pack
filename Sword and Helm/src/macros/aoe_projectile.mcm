@@ -1,0 +1,25 @@
+macro aoe_projectile {
+block {
+
+
+<%%
+
+if (typeof args[2]==='undefined'){
+arc = ""
+}else{
+arc = " ~ ~"+args[2].content
+}
+emit(`
+tp @s ^ ^ ^$$0${arc}`)
+%%>
+
+
+
+scoreboard players add @s wasd.timer 1
+execute as @s[scores={wasd.timer=$$1..}] run kill @s
+
+
+
+}
+}
+

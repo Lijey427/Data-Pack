@@ -1,0 +1,15 @@
+macro lightning_explode {
+block {
+<%%
+emit(`
+particle dust 0.898 1.000 0.000 2 ~ ~ ~ 1.5 1 1.5 1 $$0 force
+summon lightning_bolt ~2 ~ ~
+summon lightning_bolt ~-2 ~ ~
+summon lightning_bolt ~ ~ ~2
+summon lightning_bolt ~ ~ ~-2
+
+`)
+%%>
+}
+}
+

@@ -1,0 +1,25 @@
+macro fake_creeper_explode {
+block {
+<%%
+
+
+if (typeof args[0]==='undefined'){
+emit(
+"particle explosion ~ ~ ~ 1 0.9 1 0.3 25"
+)
+} else {
+emit(
+"particle explosion ~ ~ ~ 1 0.9 1 0.3 $$0"
+)
+}
+
+
+%%>
+playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 0
+playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 1
+playsound minecraft:entity.generic.explode player @a ~ ~ ~ 2 2
+
+
+}
+}
+

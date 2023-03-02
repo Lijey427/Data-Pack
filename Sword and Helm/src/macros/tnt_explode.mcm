@@ -1,0 +1,19 @@
+macro tnt_explode {
+
+block {
+<%%
+
+let double = $$0*2
+
+
+emit(`
+particle flame ~ ~ ~ 0 0 0 0.3 $$0 force
+particle minecraft:large_smoke ~ ~ ~ 0 0 0 0.1 $$0 force
+particle smoke ~ ~ ~ 0 0 0 0.4 ${double} force
+summon minecraft:tnt ~ ~1 ~
+`)
+%%>
+}
+
+}
+

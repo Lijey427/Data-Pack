@@ -1,0 +1,22 @@
+macro enderman_teleport {
+block {
+
+<%%
+
+if (typeof args[1]==='undefined'){
+emit(
+"spreadplayers ~ ~ 1 $$0 under 100 true @s"
+)
+} else {
+emit(
+"spreadplayers ~ ~ 1 $$0 under $$1 true @s"
+)
+}
+%%>
+
+
+playsound minecraft:entity.enderman.teleport player @a
+particle minecraft:portal ~ ~1 ~ 0.5 1 0.5 0 500
+}
+}
+
