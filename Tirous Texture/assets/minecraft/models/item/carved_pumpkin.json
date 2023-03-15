@@ -11,6 +11,10 @@
   {"predicate": {"custom_model_data":2}, "model": "block/custom/panda_ear"},
   {"predicate": {"custom_model_data":3}, "model": "block/custom/rock_crown"},
   {"predicate": {"custom_model_data":4}, "model": "block/custom/goblin_hat"},
-  {"predicate": {"custom_model_data":5}, "model": "block/custom/top_hat"}
+  {"predicate": {"custom_model_data":5}, "model": "block/custom/top_hat"},
+  {"predicate": {"custom_model_data":6}, "model": "block/custom/chicken_hat"},
+  {"predicate": {"custom_model_data":7}, "model": "block/custom/glasses"},
+  {"predicate": {"custom_model_data":8}, "model": "block/custom/cap"},
+  {"predicate": {"custom_model_data":9}, "model": "block/custom/headset"}
   ]
   }

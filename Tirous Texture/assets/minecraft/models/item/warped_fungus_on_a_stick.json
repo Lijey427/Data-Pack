@@ -4,7 +4,7 @@
     "layer0": "minecraft:item/warped_fungus_on_a_stick"
   },
   "overrides": [
-    {
-      "predicate": {"custom_model_data": 1},"model": "block/custom/phone"}
-  ]
+    {"predicate": {"custom_model_data": 1},"model": "block/custom/phone"},
+    {"predicate": {"custom_model_data": 2},"model": "block/custom/auto-rifle"}
+    ]
 }
